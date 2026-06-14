@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+/* 基本重設 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 全域外殼容器 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ==========================================================================
+   1. 頁首區 (Header)
+   ========================================================================== */
+.header {
+    background-color: #dcdcdc; /* 灰色背景 */
+    height: 250px;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header .nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.header .nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.header .logo {
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   2. 主體大框架 (CSS Grid 三欄佈局)
+   ========================================================================== */
+.main-wrapper {
+    display: grid;
+    /* 定義三欄寬度：左欄180px、中欄自適應(1fr)、右欄200px */
+    grid-template-columns: 180px 1fr 200px;
+    /* 定義兩列高度：上方主內容自適應、下方橫向卷軸140px */
+    grid-template-rows: auto 140px;
+    gap: 15px;
+}
+
+/* ==========================================================================
+   3. 左欄樣式
+   ========================================================================== */
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-item {
+    background-color: #ffffff;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+/* 對應圖片中的各種色塊 */
+.menu-item.active { background-color: #a0c0ff; color: #000; }
+.menu-item.color-1 { background-color: #d97373; color: #fff; }
+.menu-item.color-2 { background-color: #d97373; color: #fff; }
+.menu-item.color-3 { background-color: #d2a4d2; color: #000; }
+.menu-item.color-4 { background-color: #f07878; color: #fff; }
+
+/* ==========================================================================
+   4. 中欄樣式 (最新消息 + 頁籤 + 藍色區塊)
+   ========================================================================== */
+.center-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-header {
+    background-color: #fca6ff; /* 粉紫色標題 */
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.tabs-bar {
+    display: flex;
+    background-color: #a0c0ff;
+    border-bottom: 1px solid #333;
+}
+
+.tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-right: 1px solid #333;
+    cursor: pointer;
+}
+
+.tab-item:last-child {
+    border-right: none;
+}
+
+.tab-item.active {
+    background-color: #79a6f6; /* 當前選中頁籤變深 */
+}
+
+.main-display-panel {
+    background-color: #9cbaff; /* 藍色大區塊背景 */
+    flex-grow: 1;
+    min-height: 400px; /* 給予一個基礎高度預覽 */
+}
+
+/* ==========================================================================
+   5. 右欄樣式 (作品導覽)
+   ========================================================================== */
+.right-sidebar {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    background-color: #ffb3b3; /* 粉紅標題 */
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.vertical-scroll-zone {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 5px;
+    line-height: 1.8;
+    color: #333;
+    /* 若未來內容過多，可開啟垂直滾動 */
+    overflow-y: auto; 
+}
+
+/* ==========================================================================
+   6. 底欄樣式 (照片橫向動態卷軸)
+   ========================================================================== */
+.bottom-slider {
+    background-color: #daf0ff; /* 淺藍色背景 */
+    /* 精髓：利用 grid-column 讓它橫跨左欄與中欄（從第1條線跨到第3條線） */
+    grid-column: 1 / 3; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #333;
+    /* 若未來放照片，可開啟橫向滾動 */
+    overflow-x: auto; 
+}
+
+
+
+
+
+</style>
+
+
+
+
+
+
+<body>
+    <!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈感俱樂部</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header">
+            <div class="logo">靈感俱樂部</div>
+            <nav class="nav-menu">
+                <a href="#">網頁最新發佈</a>
+                <a href="#">作品展演</a>
+                <a href="#">活動花絮</a>
+            </nav>
+        </header>
+
+        <div class="main-wrapper">
+            
+            <aside class="left-sidebar">
+                <div class="menu-item active">自我學習</div>
+                <div class="menu-item">知識寶典</div>
+                <div class="menu-item color-1">繪圖生態</div>
+                <div class="menu-item">程式生態</div>
+                <div class="menu-item color-2">運動資訊</div>
+                <div class="menu-item">桌遊資訊</div>
+                <div class="menu-item color-3">桌遊資訊</div>
+                <div class="menu-item color-4">成員介紹</div>
+            </aside>
+
+            <main class="center-content">
+                <div class="news-header">最新消息</div>
+                <div class="tabs-bar">
+                    <div class="tab-item active">繪圖生態</div>
+                    <div class="tab-item">程式生態</div>
+                    <div class="tab-item">知識寶典</div>
+                    <div class="tab-item">運動資訊</div>
+                    <div class="tab-item">桌遊資訊</div>
+                </div>
+                <div class="main-display-panel">
+                    </div>
+            </main>
+
+            <aside class="right-sidebar">
+                <div class="sidebar-title">作品導覽</div>
+                <div class="vertical-scroll-zone">
+                    <p>作</p><p>品</p><p>直</p><p>向</p><p>動</p><p>態</p><p>卷</p><p>軸</p>
+                </div>
+            </aside>
+
+            <footer class="bottom-slider">
+                照片橫向動態卷軸
+            </footer>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+</body>
+</html>
